@@ -1,0 +1,96 @@
+[user]
+	name = Masum Islam
+	email = madsum@gmail.com
+
+[https]
+        sslCAInfo = /usr/local/share/ca-certificates/nordea_root_cert.crt
+        proxy = http://fi.client-swg.oneadr.net:8080
+[http]
+        sslCAInfo = /usr/local/share/ca-certificates/nordea_root_cert.crt
+        proxy = http://fi.client-swg.oneadr.net:8080
+[user]
+
+[alias]
+	pull = pull --rebase
+	ch = checkout
+	c = commitd
+	b = branch
+	l = log
+	s = status	
+	st2 = status -s
+	ln = log --oneline --graph --all --decorate
+	modify = show --pretty="format:" --name-only
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg = !"git lg1"
+	ls = log --stat --pretty=short --graph
+	rset = reset --soft HEAD~1
+	co = commit -a
+	br = branch -a
+	repo = remote show origin
+	clr = checkout -- .
+	check= difftool
+
+	# it will push with force-with-less take branch name as parameter
+	rset = "![ x$# != x1 ]"git reset --soft HEAD~1" >&2 || git reset --soft HEAD~\"$1\" #"
+
+	# it will push with force-with-less take branch name as parameter
+	fpush = "![ x$# != x1 ]&&echo "branch name required" >&2 || git push --force-with-lease origin \"$1\" #"
+
+	# it will push the branch to remote takes branch name as parameter
+	bpush = "![ x$# != x1 ]&&echo "branch name required" >&2 || git push origin \"$1\" #"
+
+	# this will show all files committed by the commit id hash number
+	files = "![ x$# != x1 ]&&echo "commit-ish required" >&2 || git diff --name-status \"$1\"^ \"$1\" #"
+
+	# it will mark a stage file to ignore even if it is changed	
+	ignore = "![ x$# != x1 ]&&echo "commit-ish required" >&2 || git update-index --assume-unchanged \"$1\" #"
+	
+	# it will bring the file in tracking state if it were marked by --assume-unchanged earlier
+	track = "![ x$# != x1 ]&&echo "commit-ish required" >&2 ||   git update-index --no-assume-unchanged \"$1\" #"
+
+	#  list of files marked --assume-unchanged
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
+
+	# this will show all files committed by the commit id hash number
+	logbyid = "![ x$# != x1 ]&&echo "commit-ish required" >&2 || git log -1 --name-status \"$1\"^ \"$1\" #"
+
+	# this will show all files committed by the commit id hash number
+	logbymsg = "![ x$# != x1 ]&&echo "commit-ish required" >&2 || git show :/\"$1\" #"
+
+	#logbyhash = git log -1 --format="%an %ae%n%cn %ce" $1
+
+        
+[push]
+	default = current
+[commit]
+	#template = ~/commit-msg
+[color]
+	ui = true
+#[credential]
+#	helper = manager
+
+[core]
+	editor = vim --wait
+        
+
+[credential]
+	helper = cache
+
+
+[diff]
+	tool = bc
+[difftool "bc"]
+	path = /mnt/c/Program Files/Beyond Compare 4/BCompare.exe
+[difftool]
+    prompt = false
+
+[merge]
+	tool = bc
+[mergetool "bc"]
+	path = /mnt/c/Program Files/Beyond Compare 4/BCompare.exe
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+
