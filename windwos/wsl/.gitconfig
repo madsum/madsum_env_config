@@ -65,7 +65,7 @@
 #	helper = manager
 
 [core]
-	editor = vim --wait
+	editor = code --wait
         
 
 [credential]
@@ -73,18 +73,22 @@
 
 
 [diff]
-	tool = bc
+	tool = meld
 [difftool "bc"]
 	path = /mnt/c/Program Files/Beyond Compare 4/BCompare.exe
 [difftool]
-    prompt = false
+	prompt = false
 
 [merge]
-	tool = bc
+	tool = meld
 [mergetool "bc"]
 	path = /mnt/c/Program Files/Beyond Compare 4/BCompare.exe
 
 [mergetool]
-    prompt = false
+	prompt = false
     keepBackup = false
 
+[difftool "meld"]
+	path = C:\\Program Files (x86)\\Meld\\Meld.exe
+[mergetool "meld"]
+	path = C:\\Program Files (x86)\\Meld\\Meld.exe
